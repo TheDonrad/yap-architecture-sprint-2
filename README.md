@@ -39,11 +39,22 @@ curl --silent http://ifconfig.me
 В задании 2 написано, что нужно выводить количество документов на каждом из шардов. В приложении такого функционала не было, я добавил.
 
 # Задание 2
+
 ```shell
 cd ./mongo-sharding/
 docker compose up -d
 ./scripts/mongo-init.sh
-# Выполнение всех необходимых проверок
+curl http://localhost:8080
+docker compose down -v
+cd ..
+```
+
+# Задание 3
+```shell
+cd .//mongo-sharding-repl/
+docker compose up -d
+./scripts/mongo-init.sh
+curl http://localhost:8080
 docker compose down -v
 cd ..
 ```
