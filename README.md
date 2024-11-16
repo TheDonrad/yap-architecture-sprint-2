@@ -51,10 +51,21 @@ cd ..
 
 # Задание 3
 ```shell
-cd .//mongo-sharding-repl/
+cd ./mongo-sharding-repl/
 docker compose up -d
 ./scripts/mongo-init.sh
 curl http://localhost:8080
+docker compose down -v
+cd ..
+```
+
+# Задание 4
+```shell
+cd ./sharding-repl-cache/
+docker compose up -d
+./scripts/mongo-init.sh
+curl http://localhost:8080
+curl http://localhost:8080/helloDoc/users
 docker compose down -v
 cd ..
 ```
