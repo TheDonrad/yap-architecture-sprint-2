@@ -103,7 +103,15 @@ async def root():
         shards_list = await client.admin.command("listShards")
         shards = {}
         for shard in shards_list.get("shards", {}):
-            shards[shard["_id"]] = shard["host"]
+            shardURL = shard["host"].split("/")[1]
+            shardClient = motor.motor_asyncio.AsyncIOMotorClient("mongodb://" + shardURL)
+            shardDB = shardClient[DATABASE_NAME]
+            collection = shardDB.get_collection(collection_name)
+            items_count = await collection.count_documents({})
+            shards[shard["_id"]] = {
+                "host": shard["host"],
+                "items_count": items_count,
+            }
 
     cache_enabled = False
     if REDIS_URL:
