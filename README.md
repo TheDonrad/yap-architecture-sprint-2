@@ -69,3 +69,7 @@ curl http://localhost:8080/helloDoc/users
 docker compose down -v
 cd ..
 ```
+
+# Задания 1,5,6
+
+Файл с решением `task1.drawio` расположен в корне проекта.
